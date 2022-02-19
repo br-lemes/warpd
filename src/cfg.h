@@ -52,6 +52,7 @@ struct cfg {
 	int	  hint_border_radius;
 	char	 *scroll_down;
 	char	 *scroll_up;
+	char	*slow;
 };
 
 struct cfg* parse_cfg(const char *fname);

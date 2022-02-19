@@ -109,6 +109,7 @@ struct cfg* parse_cfg(const char *fname) {
 	cfg->hint_border_radius = atoi("0");
 	cfg->scroll_down = strdup("e");
 	cfg->scroll_up = strdup("r");
+    cfg->slow = strdup("a");
 
     FILE *fp = fopen(fname, "r");
     if(!fp) return cfg; //Return defaults if no config file xists..
@@ -205,6 +206,8 @@ struct cfg* parse_cfg(const char *fname) {
             cfg->scroll_down = strdup(val);
         else if(!strcmp(key, "scroll_up"))
             cfg->scroll_up = strdup(val);
+        else if(!strcmp(key, "slow"))
+            cfg->slow = strdup(val);
 
         free(line);
         line = NULL;

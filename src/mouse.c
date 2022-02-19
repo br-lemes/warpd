@@ -26,6 +26,7 @@ static int left = 0;
 static int right = 0;
 static int up = 0;
 static int down = 0;
+static int slow = 0;
 
 static long get_time_ms()
 {
@@ -50,6 +51,7 @@ void mouse_reset()
 	right = 0;
 	up = 0;
 	down = 0;
+	slow = 0;
 }
 
 /* returns 1 if handled */
@@ -75,6 +77,7 @@ int mouse_process_key(struct input_event *ev,
 	screen_get_dimensions(&sw, &sh);
 
 	pixels_per_ms = (((float)sh / 1000 / 100) * cfg->speed);
+	if (slow) pixels_per_ms /= 5;
 
 	if (!ev)
 		goto exit;
@@ -102,6 +105,12 @@ int mouse_process_key(struct input_event *ev,
 	} else if (input_event_eq(ev, up_key)) {
 		up = ev->pressed;
 		handled++;
+	} else if (input_event_eq(ev, cfg->slow)) {
+		slow = ev->pressed;
+		left = 0;
+		right = 0;
+		up = 0;
+		down = 0;
 	}
 
 	if (handled && opnum) {
