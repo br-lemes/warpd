@@ -56,7 +56,7 @@ void init_hint_mode() {
 	int sw, sh;
 	screen_get_dimensions(&sw, &sh);
 
-	const char chars[] = "abcdefghijklmnopqrstuvwxyz./;[],\\";
+	const char chars[] = "abcdefghijklmnopqrstuvwxyz";
 
 	const int xoffset = sz;
 	const int yoffset = sz;
