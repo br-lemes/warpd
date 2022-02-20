@@ -52,6 +52,8 @@ struct cfg {
 	int	  hint_border_radius;
 	char	 *scroll_down;
 	char	 *scroll_up;
+	char	*scroll_left;
+	char	*scroll_right;
 	char	*slow;
 };
 

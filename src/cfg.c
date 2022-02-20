@@ -109,6 +109,8 @@ struct cfg* parse_cfg(const char *fname) {
 	cfg->hint_border_radius = atoi("0");
 	cfg->scroll_down = strdup("e");
 	cfg->scroll_up = strdup("r");
+    cfg->scroll_left = strdup("u");
+    cfg->scroll_right = strdup("o");
     cfg->slow = strdup("a");
 
     FILE *fp = fopen(fname, "r");
@@ -206,6 +208,10 @@ struct cfg* parse_cfg(const char *fname) {
             cfg->scroll_down = strdup(val);
         else if(!strcmp(key, "scroll_up"))
             cfg->scroll_up = strdup(val);
+        else if(!strcmp(key, "scroll_left"))
+            cfg->scroll_left = strdup(val);
+        else if(!strcmp(key, "scroll_right"))
+            cfg->scroll_right = strdup(val);
         else if(!strcmp(key, "slow"))
             cfg->slow = strdup(val);
 

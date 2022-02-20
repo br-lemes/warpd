@@ -64,6 +64,18 @@ struct input_event *normal_mode(struct input_event *start_ev)
 				scroll_accelerate(SCROLL_UP);
 			} else
 				scroll_decelerate();
+		} else if (input_event_eq(ev, cfg->scroll_left)) {
+			if (ev->pressed) {
+				scroll_stop();
+				scroll_accelerate(SCROLL_LEFT);
+			} else
+				scroll_decelerate();
+		} else if (input_event_eq(ev, cfg->scroll_right)) {
+			if (ev->pressed) {
+				scroll_stop();
+				scroll_accelerate(SCROLL_RIGHT);
+			} else
+				scroll_decelerate();
 		} else if (!ev->pressed) {
 			goto next;
 		}
